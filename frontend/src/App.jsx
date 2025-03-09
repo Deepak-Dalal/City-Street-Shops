@@ -48,6 +48,7 @@ function App() {
   useEffect(() => {
     dispatch(listProductCategories());
   }, [dispatch]);
+
   return (
     <BrowserRouter>
       <div className="grid-container">
