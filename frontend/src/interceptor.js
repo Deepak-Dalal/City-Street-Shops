@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://city-street-shops.onrender.com";
+const API_BASE_URL = "https://city-street-shops-vite.vercel.app";
 
 // Intercept all Axios requests
 axios.interceptors.request.use(
