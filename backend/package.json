@@ -5,8 +5,8 @@
   "description": "Ecommerce website for shopping online from street shops in a city",
   "main": "index.js",
   "scripts": {
-    "build": "cd frontend && npm install --legacy-peer-deps && npm run build",
-    "start": "nodemon --watch backend --exec node --experimental-modules index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
