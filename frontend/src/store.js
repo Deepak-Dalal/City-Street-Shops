@@ -1,4 +1,4 @@
-import { createStore, compose, applyMiddleware, combineReducers } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import { cartReducer } from "./reducers/cartReducers";
 import {
@@ -33,6 +33,7 @@ import {
   userUpdateProfileReducer,
   userUpdateReducer,
 } from "./reducers/userReducers";
+import { composeWithDevTools } from "@redux-devtools/extension";
 
 const initialState = {
   userSignin: {
@@ -79,15 +80,14 @@ const reducer = combineReducers({
   userAddressMap: userAddressMapReducer,
   orderSummary: orderSummaryReducer,
 });
-const composeEnhancer =
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-    trace: true,
-    traceLimit: 25,
-  }) || compose;
+const composeEnhancer = composeWithDevTools({
+  trace: true,
+  traceLimit: 25,
+});
+
 const store = createStore(
   reducer,
   initialState,
   composeEnhancer(applyMiddleware(thunk))
 );
-
 export default store;

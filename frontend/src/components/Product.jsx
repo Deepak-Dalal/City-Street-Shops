@@ -1,13 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Rating from './Rating';
+import React from "react";
+import { Link } from "react-router-dom";
+import Rating from "./Rating";
 
 export default function Product(props) {
   const { product } = props;
   return (
     <div key={product._id} className="card small-box list-card">
       <Link to={`/product/${product._id}`}>
-        <img className="medium" src={product.image} alt={product.name} />
+        <img
+          className="medium"
+          src={`${import.meta.env.VITE_REACT_APP_BACKEND_BASE_URL}${
+            product.image
+          }`}
+          alt={product.name}
+        />
       </Link>
       <div className="card-body ">
         <Link to={`/product/${product._id}`}>

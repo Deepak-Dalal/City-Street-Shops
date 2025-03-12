@@ -62,7 +62,9 @@ export default function ProductScreen() {
             <div className="col-2">
               <img
                 className="large"
-                src={product.image}
+                src={`${import.meta.env.VITE_REACT_APP_BACKEND_BASE_URL}${
+                  product.image
+                }`}
                 alt={product.name}
               ></img>
             </div>

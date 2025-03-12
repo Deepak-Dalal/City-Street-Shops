@@ -9,8 +9,6 @@ axios.interceptors.request.use(
     if (!config.url.startsWith("http")) {
       config.url = `${API_BASE_URL}${config.url}`;
     }
-
-    console.log(`[Axios Interceptor] Request to: ${config.url}`);
     return config;
   },
   (error) => Promise.reject(error)

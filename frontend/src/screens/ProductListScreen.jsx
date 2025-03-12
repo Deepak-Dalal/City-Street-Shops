@@ -112,7 +112,9 @@ export default function ProductListScreen() {
                     {product._id}
                     <img
                       className="medium"
-                      src={product.image}
+                      src={`${import.meta.env.VITE_REACT_APP_BACKEND_BASE_URL}${
+                        product.image
+                      }`}
                       alt={product.name}
                     ></img>
                   </td>

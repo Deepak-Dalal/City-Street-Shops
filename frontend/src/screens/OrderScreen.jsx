@@ -1,13 +1,12 @@
 import Axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import {
   confirmPay,
   deliverOrder,
   detailsOrder,
-  payOrder,
 } from "../actions/orderActions";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
@@ -164,7 +163,9 @@ export default function OrderScreen() {
                       <div className="row">
                         <div>
                           <img
-                            src={item.image}
+                            src={`${
+                              import.meta.env.VITE_REACT_APP_BACKEND_BASE_URL
+                            }${item.image}`}
                             alt={item.name}
                             className="small"
                           ></img>

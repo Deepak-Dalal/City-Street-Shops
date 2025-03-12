@@ -42,13 +42,24 @@ export const uploadFile = async (file) => {
 };
 
 // downloads a file from s3
-export const getFileStream = (fileKey) => {
-  const downloadParams = {
-    Key: fileKey,
-    Bucket: bucketName,
-  };
+export const getImageFile = async (fileKey) => {
+  try {
+    const downloadParams = {
+      Key: fileKey,
+      Bucket: bucketName,
+    };
 
-  return s3.getObject(downloadParams);
+    // Fetch the object from S3
+    const result = await s3.getObject(downloadParams).promise();
+
+    return {
+      Body: result.Body, // The file buffer
+      ContentType: result.ContentType, // The correct MIME type
+    };
+  } catch (error) {
+    console.error("Error fetching file from S3:", error);
+    throw error; // Throw the error so it can be handled in the route
+  }
 };
 
 //delete a file from s3

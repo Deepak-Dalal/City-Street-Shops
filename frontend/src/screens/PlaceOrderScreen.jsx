@@ -172,7 +172,9 @@ export default function PlaceOrderScreen() {
                       <div className="row">
                         <div>
                           <img
-                            src={item.image}
+                            src={`${
+                              import.meta.env.VITE_REACT_APP_BACKEND_BASE_URL
+                            }${item.image}`}
                             alt={item.name}
                             className="small"
                           ></img>

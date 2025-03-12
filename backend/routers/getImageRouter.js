@@ -1,17 +1,23 @@
-import express from 'express';
-import {getFileStream} from '../s3.js';
+import express from "express";
+import { getImageFile } from "../s3.js";
 const ImageRouter = express.Router();
 
-ImageRouter.get('/:key', (req, res) => {
-    console.log(req.params);
+ImageRouter.get("/:key", async (req, res) => {
+  try {
     const key = req.params.key;
-    const readStream = getFileStream(key);
-    if(readStream) {
-        readStream.createReadStream().on('error', e => {
-            console.log(e);
-            res.status(404).send("Image not found");
-        }).pipe(res);
-    }
-})
+    // Call the function to fetch the file
+    const { Body, ContentType } = await getImageFile(key);
+
+    // Set appropriate response headers
+    res.setHeader("Content-Type", ContentType);
+    res.setHeader("Cache-Control", "public, max-age=31536000"); // Optimize caching
+
+    // Send the image buffer
+    res.send(Body);
+  } catch (error) {
+    console.error("Error serving image:", error);
+    res.status(404).send("Image not found");
+  }
+});
 
 export default ImageRouter;
