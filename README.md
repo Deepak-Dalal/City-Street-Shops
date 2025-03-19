@@ -56,6 +56,7 @@ https://city-street-shops.onrender.com (Cold start)
    - Create a `.env` file in the backend directory.
    - Add the following:
      ```env
+     MONGODB=your_mongodb_atlas_url
      AWS_BUCKET_NAME1=your_aws_s3_bucket_name
      AWS_BUCKET_REGION1=your_aws_s3_bucket_region
      AWS_ACCESS_KEY1=your_aws_s3_bucket_access_key
