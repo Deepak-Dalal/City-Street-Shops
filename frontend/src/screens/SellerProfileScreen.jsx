@@ -27,7 +27,9 @@ export default function SellerProfileScreen() {
           <>
             <img
               className="medium"
-              src={user.seller.logo}
+              src={`${import.meta.env.VITE_REACT_APP_BACKEND_BASE_URL}${
+                user.seller.logo
+              }`}
               alt={user.seller.name + "'s logo"}
             ></img>
             <ul>

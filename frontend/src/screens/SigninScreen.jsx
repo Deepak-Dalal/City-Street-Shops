@@ -12,7 +12,7 @@ export default function SigninScreen() {
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const redirect = searchParams.get("redirect") || "/";
+  const redirect = searchParams.get("redirect") || "";
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo, loading, error } = userSignin;

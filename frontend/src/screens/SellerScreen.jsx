@@ -110,7 +110,9 @@ export default function SellerScreen() {
                 <div className="p-1">
                   <img
                     className="small"
-                    src={user.seller.logo}
+                    src={`${import.meta.env.VITE_REACT_APP_BACKEND_BASE_URL}${
+                      user.seller.logo
+                    }`}
                     alt={user.seller.name}
                   ></img>
                 </div>

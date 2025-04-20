@@ -1,13 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Rating from './Rating';
+import React from "react";
+import { Link } from "react-router-dom";
+import Rating from "./Rating";
 
 export default function Seller(props) {
   const { seller } = props;
   return (
     <div key={seller._id} className="card small-box list-card">
       <Link to={`/seller/${seller._id}`}>
-        <img className="medium" src={seller.seller.logo} alt={seller.seller.name} />
+        <img
+          className="medium"
+          src={`${import.meta.env.VITE_REACT_APP_BACKEND_BASE_URL}${
+            seller.seller.logo
+          }`}
+          alt={seller.seller.name}
+        />
       </Link>
       <div className="card-body seller-rating">
         <Link to={`/seller/${seller._id}`}>
